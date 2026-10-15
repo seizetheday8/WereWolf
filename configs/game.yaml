@@ -1,0 +1,26 @@
+# WereWolf 游戏配置
+
+game:
+  # 角色分配（8 人标准局）
+  roles:
+    werewolf: 2
+    seer: 1
+    witch: 1
+    hunter: 1
+    villager: 3
+
+  # 阶段时长（秒）默认不限时
+  # phases:
+  #   night_duration: 30
+  #   day_discuss_duration: 120
+  #   vote_duration: 30
+
+  # 胜负条件
+  win_conditions:
+    werewolf: "存活狼人数 >= 存活好人数"
+    villager: "所有狼人被放逐或死亡"
+
+  # 狼人协商
+  wolf_negotiation:
+    max_rounds: 3           # 最大协商轮数
+    consensus_timeout: true  # 超时后强制按票多决策
