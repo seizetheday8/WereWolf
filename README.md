@@ -38,10 +38,7 @@ WereWolf/
 ├── configs/
 │   └── game.yaml              # 游戏角色与规则配置
 ├── data/
-│   └── logs/                  # 对局事件日志
-├── plan/
-│   ├── 计划.md                # 项目规划
-│   └── 临时计划.md
+│   └── logs/                  # 对局事件日志（运行产物，不入库）
 ├── scripts/
 │   └── run_game.py            # CLI 单局运行入口
 ├── src/
@@ -68,6 +65,8 @@ WereWolf/
 │   └── utils/
 │       └── prompt_loader.py   # Prompt YAML 加载
 ├── tests/                     # 测试目录，目前仅有包结构
+├── .env.example               # 环境变量模板，复制为 .env 后填写
+├── .gitignore
 └── requirements.txt
 ```
 
@@ -99,7 +98,11 @@ pip install -r requirements.txt
 
 ### 3. 配置 LLM 环境变量
 
-项目通过 `.env` 读取 OpenAI 兼容接口配置：
+项目通过 `.env` 读取 OpenAI 兼容接口配置。仓库中提供了模板，复制一份再填写即可：
+
+```bash
+cp .env.example .env
+```
 
 ```env
 API_KEY=你的 API Key
@@ -108,6 +111,8 @@ MODEL=deepseek-v4-pro
 ```
 
 `MODEL`、`API_KEY`、`BASE_URL` 会在 `src/llm/provider.py` 中被读取。如果使用标准 OpenAI 接口，也可以按 OpenAI SDK 的兼容方式填写。
+
+`.env` 已在 `.gitignore` 中，不会被提交到仓库。
 
 ### 4. 运行单局游戏
 
